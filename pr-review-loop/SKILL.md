@@ -110,8 +110,12 @@ Confirm tests pass, nothing is broken. Do not skip this step. Do not claim fixes
 
 Re-run `pr-review-toolkit:review-pr` using `Skill("pr-review-toolkit:review-pr")`. This is NOT optional. You cannot exit the loop without a clean re-review.
 
+**"Clean" means:** Re-review returns zero actionable findings. Not "I fixed what re-review found" — that's mid-loop, not exit.
+
+**If re-review finds issues:** Fix them → verify → re-review AGAIN. This applies recursively. Fixing re-review findings is just another loop iteration, not a special case.
+
 - If issues remain → back to Step 2
-- If clean → Step 7
+- If clean (zero actionable findings) → Step 7
 
 ### 7. Exit
 
@@ -126,6 +130,9 @@ Review is clean. Complete the development branch.
 - Skipping re-review because "I'm confident the fixes are correct" → **STOP.** Confidence is not verification.
 - Treating implementation as the final step → **STOP.** Implementation is mid-loop, not end-of-loop.
 - Copy-pasting review output manually → **STOP.** The skill automates this. Use the review output directly.
+- "Re-review found issues, I fixed them, verification passes — done" → **STOP.** Fixing re-review findings requires ANOTHER re-review. Exit = zero findings, not zero unfixed findings.
+- "The fix was trivial (typo/duplicate removal), no need to re-review" → **STOP.** The loop has no trivial-fix bypass. Every fix gets re-reviewed.
+- Calling `Task(pr-review-toolkit:code-reviewer)` or any review subagent directly → **STOP.** Always use `Skill("pr-review-toolkit:review-pr")` — it decides which agents to dispatch based on what changed.
 
 ## Common Mistakes
 
@@ -139,3 +146,6 @@ Review is clean. Complete the development branch.
 | Run only one pass of the loop | Loop until re-review is clean |
 | Implement before evaluating all feedback | Evaluate ALL items first (receiving-code-review rules) |
 | Use Task tool for pr-review-toolkit:review-pr | It's a Skill, not a subagent — use Skill tool |
+| Fix re-review findings and exit without re-reviewing | Fixing re-review findings = another loop iteration. Re-review again. |
+| Skip re-review for "trivial" fixes | Every fix goes through the loop. No trivial bypass exists. |
+| Call review subagents directly via Task tool | Always go through `Skill("pr-review-toolkit:review-pr")` — it handles agent selection based on changed files |
