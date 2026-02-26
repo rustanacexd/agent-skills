@@ -6,7 +6,7 @@ Custom AI coding agent skills for automated development workflows. Agent-agnosti
 
 | Skill | Description |
 |-------|-------------|
-| [pr-review-loop](./pr-review-loop/) | Automated PR review-fix-verify cycle. Chains review, evaluation, implementation, verification, and re-review into a loop that runs until clean. |
+| [pr-review-loop](./pr-review-loop/) | Automated PR review-fix-verify cycle for [superpowers](https://github.com/obra/superpowers) + [pr-review-toolkit](https://github.com/anthropics/claude-code/tree/main/plugins). Chains review, evaluation, implementation, verification, and re-review into a loop that runs until clean. |
 | [reviewing-plans](./reviewing-plans/) | Two-stage review gate for the [superpowers](https://github.com/obra/superpowers) design→plan→execution workflow. Reviews designs before planning, then reviews plans against designs before execution. |
 
 ## Installation
