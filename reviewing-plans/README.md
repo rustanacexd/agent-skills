@@ -4,11 +4,11 @@ A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that revie
 
 ## The Problem
 
-When using Claude Code to go from design → plan → execution, there's no formal review gate between stages:
+When using the [superpowers](https://github.com/obra/superpowers) workflow (design → plan → execution), there's no formal review gate between stages:
 
-1. You write or brainstorm a design
-2. You run `writing-plans` to create an implementation plan
-3. You run `subagent-driven-development` or `executing-plans` to execute it
+1. You brainstorm a design (`superpowers:brainstorming`)
+2. You create a plan (`superpowers:writing-plans`)
+3. You execute it (`superpowers:subagent-driven-development` or `superpowers:executing-plans`)
 4. **Issues surface during implementation** — missing requirements, scope creep, underspecified tasks, contradictions between plan and design
 
 The review happens too late. By the time you discover the design was vague or the plan missed a requirement, you've already built the wrong thing.
@@ -69,23 +69,24 @@ Human: another review pass or proceed?
 
 **Coverage tables for plan review.** Stage 2 starts with a requirement↔task coverage table before diving into findings. Makes gaps and scope creep immediately visible.
 
-## Skills Orchestrated
+## Where It Fits in the Superpowers Workflow
 
 This skill is a standalone review gate. It doesn't orchestrate other skills — it's invoked between them:
 
 ```
-brainstorming → writing-plans
-                    ↑
-            reviewing-plans (stage 1: review design)
+superpowers:brainstorming → superpowers:writing-plans
+                                ↑
+                        reviewing-plans (stage 1: review design)
 
-writing-plans → subagent-driven-development
-                    ↑
-            reviewing-plans (stage 2: review plan against design)
+superpowers:writing-plans → superpowers:subagent-driven-development
+                                ↑
+                        reviewing-plans (stage 2: review plan against design)
 ```
 
 ## Prerequisites
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — **required** (not compatible with Codex or other agents)
+- [superpowers](https://github.com/obra/superpowers) — the workflow this skill gates (brainstorming, writing-plans, subagent-driven-development)
 
 > **Claude Code only.** The skill's structured output format and human-in-the-loop gating depend on Claude Code's interactive session model.
 
