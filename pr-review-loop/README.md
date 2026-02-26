@@ -83,9 +83,11 @@ So the large path adds `writing-plans` as an intermediate step to convert review
 
 ## Prerequisites
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — **required** (not compatible with Codex or other agents)
 - [superpowers](https://github.com/obra/superpowers) plugin (provides receiving-code-review, writing-plans, subagent-driven-development, verification-before-completion, finishing-a-development-branch)
 - [pr-review-toolkit](https://github.com/anthropics/claude-code/tree/main/plugins) plugin (provides review-pr and specialized review agents)
+
+> **Claude Code only.** This skill depends on `pr-review-toolkit` (a Claude Code plugin) and dispatches subagents via the Task tool. These capabilities are not available in Codex or other agents.
 
 ## Installation
 
