@@ -109,7 +109,7 @@ Confirm tests pass, nothing is broken. Do not skip this step. Do not claim fixes
 
 ### 6. Re-Review
 
-Re-run `pr-review-toolkit:review-pr` using `Skill("pr-review-toolkit:review-pr")` — full review, all agents. This is NOT optional. You cannot exit the loop without a clean re-review.
+Re-run `pr-review-toolkit:review-pr` using `Skill("pr-review-toolkit:review-pr")`. This is NOT optional. You cannot exit the loop without a clean re-review.
 
 - If issues remain → back to Step 2
 - If clean → Step 7
@@ -127,7 +127,6 @@ Review is clean. Complete the development branch.
 - Skipping re-review because "I'm confident the fixes are correct" → **STOP.** Confidence is not verification.
 - Treating implementation as the final step → **STOP.** Implementation is mid-loop, not end-of-loop.
 - Copy-pasting review output manually → **STOP.** The skill automates this. Use the review output directly.
-- Running only some review agents on re-review → **STOP.** Re-review must invoke the full `pr-review-toolkit:review-pr` skill, not a subset of agents.
 
 ## Common Mistakes
 
@@ -140,5 +139,4 @@ Review is clean. Complete the development branch.
 | Skip verification-before-completion | Never — this confirms tests actually pass |
 | Run only one pass of the loop | Loop until re-review is clean |
 | Implement before evaluating all feedback | Evaluate ALL items first (receiving-code-review rules) |
-| Re-review with only some agents | Re-review must use full pr-review-toolkit:review-pr, all agents |
 | Use Task tool for pr-review-toolkit:review-pr | It's a Skill, not a subagent — use Skill tool |
