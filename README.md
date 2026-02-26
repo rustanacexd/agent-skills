@@ -1,6 +1,6 @@
 # agent-skills
 
-Custom [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills for automated development workflows.
+Custom AI coding agent skills for automated development workflows. Agent-agnostic — works with [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Codex](https://github.com/openai/codex), or any agent that supports markdown-based skills.
 
 ## Skills
 
@@ -10,22 +10,31 @@ Custom [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills for 
 
 ## Installation
 
-Symlink individual skills into your Claude Code personal skills directory:
+Symlink skills into your agent's skills directory:
 
 ```bash
-# Install a single skill
+# Claude Code
 ln -s /path/to/agent-skills/pr-review-loop ~/.claude/skills/pr-review-loop
 
-# Or install all skills
+# Codex
+ln -s /path/to/agent-skills/pr-review-loop ~/.agents/skills/pr-review-loop
+
+# Install all skills for Claude Code
 for skill in /path/to/agent-skills/*/; do
   name=$(basename "$skill")
-  [ "$name" = "node_modules" ] && continue
   [ -f "$skill/SKILL.md" ] || continue
   ln -sf "$skill" ~/.claude/skills/"$name"
 done
+
+# Install all skills for Codex
+for skill in /path/to/agent-skills/*/; do
+  name=$(basename "$skill")
+  [ -f "$skill/SKILL.md" ] || continue
+  ln -sf "$skill" ~/.agents/skills/"$name"
+done
 ```
 
-Skills are available immediately in all Claude Code sessions after symlinking.
+Skills are available immediately in all sessions after symlinking.
 
 ## Prerequisites
 
