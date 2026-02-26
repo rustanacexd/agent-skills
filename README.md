@@ -11,28 +11,62 @@ Custom AI coding agent skills for automated development workflows. Agent-agnosti
 
 ## Installation
 
-Symlink skills into your agent's skills directory:
+Preferred: install from this repo with the helper script:
+
+```bash
+./install.sh
+```
+
+Or via Make:
+
+```bash
+make install-skills
+```
+
+This script:
+- detects installed agents via `command -v`
+- symlinks all `SKILL.md` folders with `ln -sfn`
+- links Claude Code skills to `~/.claude/skills`
+- links Codex skills to `~/.agents/skills`
+
+To remove only symlinks created from this repo:
+
+```bash
+./uninstall.sh
+```
+
+Or via Make:
+
+```bash
+make uninstall-skills
+```
+
+Manual symlink setup (if you prefer):
 
 ```bash
 # Claude Code — single skill
-ln -s /path/to/agent-skills/pr-review-loop ~/.claude/skills/pr-review-loop
+mkdir -p ~/.claude/skills
+ln -sfn /path/to/agent-skills/pr-review-loop ~/.claude/skills/pr-review-loop
 
 # Claude Code — all skills
 for skill in /path/to/agent-skills/*/; do
   name=$(basename "$skill")
   [ -f "$skill/SKILL.md" ] || continue
-  ln -sf "$skill" ~/.claude/skills/"$name"
+  mkdir -p ~/.claude/skills
+  ln -sfn "$skill" ~/.claude/skills/"$name"
 done
 
 # Codex — all compatible skills
 for skill in /path/to/agent-skills/*/; do
   name=$(basename "$skill")
   [ -f "$skill/SKILL.md" ] || continue
-  ln -sf "$skill" ~/.agents/skills/"$name"
+  mkdir -p ~/.agents/skills
+  ln -sfn "$skill" ~/.agents/skills/"$name"
 done
 ```
 
 > **Note:** Not all skills are compatible with all agents. Check each skill's README for compatibility.
+> **Codex note:** `~/.agents/skills` is the current path. `~/.codex/skills` may still work as legacy compatibility in some setups.
 
 Skills are available immediately in all sessions after symlinking.
 
