@@ -41,7 +41,7 @@ digraph review_process {
     "Changes needed? (2)" [shape=diamond];
     "Apply changes (2)" [shape=box];
     "Human: another review pass or proceed? (2)" [shape=diamond];
-    "Proceed to execution" [shape=box style=filled fillcolor=lightgreen];
+    "Proceed to execution" [shape=doublecircle];
 
     "Design exists?" -> "Stage 1: Review design" [label="yes"];
     "Design exists?" -> "Plan exists?" [label="no — design already reviewed"];
