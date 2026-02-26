@@ -35,7 +35,6 @@ digraph review_loop {
     "writing-plans → subagent-driven-development" [shape=box];
     "verification-before-completion" [shape=box];
     "Re-run pr-review-toolkit:review-pr" [shape=box];
-    "Clean?" [shape=diamond];
     "finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
 
     "Run pr-review-toolkit:review-pr" -> "Evaluate feedback (receiving-code-review)";

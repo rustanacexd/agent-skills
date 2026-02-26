@@ -91,7 +91,13 @@ So the large path adds `writing-plans` as an intermediate step to convert review
 
 ## Installation
 
-Copy the `SKILL.md` file to your Claude Code personal skills directory:
+Symlink into your Claude Code personal skills directory:
+
+```bash
+ln -s /path/to/agent-skills/pr-review-loop ~/.claude/skills/pr-review-loop
+```
+
+Or copy if you prefer a standalone install:
 
 ```bash
 mkdir -p ~/.claude/skills/pr-review-loop

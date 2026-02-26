@@ -13,26 +13,25 @@ Custom AI coding agent skills for automated development workflows. Agent-agnosti
 Symlink skills into your agent's skills directory:
 
 ```bash
-# Claude Code
+# Claude Code — single skill
 ln -s /path/to/agent-skills/pr-review-loop ~/.claude/skills/pr-review-loop
 
-# Codex
-ln -s /path/to/agent-skills/pr-review-loop ~/.agents/skills/pr-review-loop
-
-# Install all skills for Claude Code
+# Claude Code — all skills
 for skill in /path/to/agent-skills/*/; do
   name=$(basename "$skill")
   [ -f "$skill/SKILL.md" ] || continue
   ln -sf "$skill" ~/.claude/skills/"$name"
 done
 
-# Install all skills for Codex
+# Codex — all compatible skills
 for skill in /path/to/agent-skills/*/; do
   name=$(basename "$skill")
   [ -f "$skill/SKILL.md" ] || continue
   ln -sf "$skill" ~/.agents/skills/"$name"
 done
 ```
+
+> **Note:** Not all skills are compatible with all agents. Check each skill's README for compatibility.
 
 Skills are available immediately in all sessions after symlinking.
 
