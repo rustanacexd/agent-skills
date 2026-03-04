@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create PR"
+  short_description: "Create or update clear pull requests"
+  default_prompt: "Use $create-pr to open or refresh a focused pull request description."

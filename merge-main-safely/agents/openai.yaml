@@ -1,0 +1,4 @@
+interface:
+  display_name: "Safe Main Merge"
+  short_description: "Merge latest main into current branch safely"
+  default_prompt: "Use $merge-main-safely to merge origin/main into the current branch with careful conflict resolution and post-merge verification."
