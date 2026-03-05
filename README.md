@@ -9,6 +9,7 @@ Custom AI coding agent skills for automated development workflows. Agent-agnosti
 | [pr-review-loop](./pr-review-loop/) | Automated PR review-fix-verify cycle for [superpowers](https://github.com/obra/superpowers) + [pr-review-toolkit](https://github.com/anthropics/claude-code/tree/main/plugins). Chains review, evaluation, implementation, verification, and re-review into a loop that runs until clean. |
 | [reviewing-plans](./reviewing-plans/) | Two-stage review gate for the [superpowers](https://github.com/obra/superpowers) design→plan→execution workflow. Reviews designs before planning, then reviews plans against designs before execution. |
 | [iterative-plan-review-loop](./iterative-plan-review-loop/) | Manual-invocation skill for repeated fresh-subagent plan review loops (`review -> patch -> re-review`) until `NO_FINDINGS` or iteration cap. |
+| [iterative-code-review-loop](./iterative-code-review-loop/) | Manual-invocation skill for repeated post-implementation review hardening loops (`request-review -> receive-review -> commit`) until no `Critical`/`Important` findings or iteration cap. |
 | [commit](./commit/) | Focused commit skill for intent-based staging, conventional commit messages, and safe per-commit verification. |
 | [create-pr](./create-pr/) | PR authoring skill for purpose-first titles/bodies, scoped change summaries, and verification evidence. |
 | [merge-main-safely](./merge-main-safely/) | Conservative branch sync skill for merging latest upstream base branch with conflict-aware validation. |
